@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_jc8yABGwEeSm-JxS5ouEaA" type="PapyrusUMLActivityDiagram" name="NewDiagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_jc8yARGwEeSm-JxS5ouEaA" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jc8yAhGwEeSm-JxS5ouEaA" type="5001"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jc8yBBGwEeSm-JxS5ouEaA" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_jc8yBRGwEeSm-JxS5ouEaA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_jc8yBhGwEeSm-JxS5ouEaA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jc8yBxGwEeSm-JxS5ouEaA"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jc8yCBGwEeSm-JxS5ouEaA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_jc8yCRGwEeSm-JxS5ouEaA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_jc8yChGwEeSm-JxS5ouEaA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jc8yCxGwEeSm-JxS5ouEaA"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jc8yDBGwEeSm-JxS5ouEaA" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_jc8yDRGwEeSm-JxS5ouEaA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_jc8yDhGwEeSm-JxS5ouEaA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jc8yDxGwEeSm-JxS5ouEaA"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jc8yEBGwEeSm-JxS5ouEaA" type="7004">
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jc8yERGwEeSm-JxS5ouEaA"/>
+    </children>
+    <element xmi:type="uml:Activity" href="model2.uml#_jczoEBGwEeSm-JxS5ouEaA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jc8yEhGwEeSm-JxS5ouEaA"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_jc8yExGwEeSm-JxS5ouEaA"/>
+  <element xmi:type="uml:Activity" href="model2.uml#_jczoEBGwEeSm-JxS5ouEaA"/>
+</notation:Diagram>

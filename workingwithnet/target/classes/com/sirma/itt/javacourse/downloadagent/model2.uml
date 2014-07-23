@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_n43loBJeEeSqLs724wsYCA" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_n5FBABJeEeSqLs724wsYCA" name="Activity1" node="_pNP-oBJeEeSqLs724wsYCA _xoIgQBJeEeSqLs724wsYCA _IiPEgBJfEeSqLs724wsYCA _WqWOsBJfEeSqLs724wsYCA _gksX8BJfEeSqLs724wsYCA _t_H8wBJfEeSqLs724wsYCA _IqPUgBJgEeSqLs724wsYCA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_5hFZgBJeEeSqLs724wsYCA" name="User invokes the method." source="_pNP-oBJeEeSqLs724wsYCA" target="_xoIgQBJeEeSqLs724wsYCA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Kk-YUBJfEeSqLs724wsYCA" name="if correct" source="_xoIgQBJeEeSqLs724wsYCA" target="_IiPEgBJfEeSqLs724wsYCA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ZQi04BJfEeSqLs724wsYCA" name="true" source="_IiPEgBJfEeSqLs724wsYCA" target="_WqWOsBJfEeSqLs724wsYCA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lvBHwBJfEeSqLs724wsYCA" name="" source="_WqWOsBJfEeSqLs724wsYCA" target="_gksX8BJfEeSqLs724wsYCA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_DfRrgBJgEeSqLs724wsYCA" name="" source="_gksX8BJfEeSqLs724wsYCA" target="_t_H8wBJfEeSqLs724wsYCA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KMLoYBJgEeSqLs724wsYCA" name="" source="_t_H8wBJfEeSqLs724wsYCA" target="_IqPUgBJgEeSqLs724wsYCA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_LbZNgBJgEeSqLs724wsYCA" name="false" source="_IiPEgBJfEeSqLs724wsYCA" target="_IqPUgBJgEeSqLs724wsYCA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_pNP-oBJeEeSqLs724wsYCA" name="InitialNode" outgoing="_5hFZgBJeEeSqLs724wsYCA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_xoIgQBJeEeSqLs724wsYCA" name="Creates the url from the string." outgoing="_Kk-YUBJfEeSqLs724wsYCA" incoming="_5hFZgBJeEeSqLs724wsYCA"/>
+    <node xmi:type="uml:MergeNode" xmi:id="_IiPEgBJfEeSqLs724wsYCA" name="MergeNode" outgoing="_ZQi04BJfEeSqLs724wsYCA _LbZNgBJgEeSqLs724wsYCA" incoming="_Kk-YUBJfEeSqLs724wsYCA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_WqWOsBJfEeSqLs724wsYCA" name="Create the connection." outgoing="_lvBHwBJfEeSqLs724wsYCA" incoming="_ZQi04BJfEeSqLs724wsYCA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_gksX8BJfEeSqLs724wsYCA" name="Read from the input stream." outgoing="_DfRrgBJgEeSqLs724wsYCA" incoming="_lvBHwBJfEeSqLs724wsYCA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_t_H8wBJfEeSqLs724wsYCA" name="Creates the file and writes the bytes in." outgoing="_KMLoYBJgEeSqLs724wsYCA" incoming="_DfRrgBJgEeSqLs724wsYCA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_IqPUgBJgEeSqLs724wsYCA" name="ActivityFinalNode" incoming="_KMLoYBJgEeSqLs724wsYCA _LbZNgBJgEeSqLs724wsYCA"/>
+  </packagedElement>
+</uml:Model>
