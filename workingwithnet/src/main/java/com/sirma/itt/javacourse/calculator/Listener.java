@@ -12,13 +12,11 @@ import java.awt.event.ActionListener;
  */
 public class Listener implements ActionListener {
 	private int num; // the pressed number
-	private static String first = ""; // the first number 
+	private static String first = ""; // the first number
 	private static String second = ""; // the second number
-	private char character; // the command character
-	
-	
-	
-	
+	private static char character; // the command character
+	private String helper = "";
+
 	/**
 	 * Getter for the first number.
 	 * 
@@ -36,8 +34,7 @@ public class Listener implements ActionListener {
 	public static String getSecond() {
 		return second;
 	}
-	
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -62,24 +59,33 @@ public class Listener implements ActionListener {
 						// else does nothing and waits for another command
 					}
 				} else if (e.getActionCommand() == "L") {
-					first = first.substring(0, first.length() - 1); // deletes
-																	// the last
-																	// character
+					if (first.length() > 0) {
+						// deletes the last character
+						first = first.substring(0, first.length() - 1);
+					}
 					Construct.screen.setText(first);
 				} else if (e.getActionCommand() == "A") {
 					first = "";
 					Construct.screen.setText(first); // deletes the
 														// whole number
+				} else if (e.getActionCommand() == "-" && first.length() == 0) {
+					first += "-";
+					Construct.screen.setText(first);
+				} else if (e.getActionCommand() == "=") {
+					Construct.screen.setText(first);
 				} else {
-					character = e.getActionCommand().charAt(0); // keeps
-																// the
-																// command
-					Methods.setSecond(true); // sets the next number to be put
-												// to the second
+					if (Methods.isInt(first) || Methods.isDouble(first)) {
+						// keeps the command
+						character = e.getActionCommand().charAt(0);
+						Methods.setSecond(true); // sets the next number to be
+													// put
+													// to the second
+					}
 				}
 			}
 
 		} else { // if it is set to be the second's turn
+
 			try {
 				num = Integer.parseInt(e.getActionCommand());
 				second += num; // if the pressed button is number adds
@@ -87,44 +93,53 @@ public class Listener implements ActionListener {
 				Construct.screen.setText(second);
 			} catch (NumberFormatException i) {
 				if (e.getActionCommand() == ".") {
-
-					if (!second.contains(".")) {// checks if the second
-												// is integer
+					// checks if the second is integer
+					if (!second.contains(".") && second.length() > 1) {
 						second += "."; // makes it decimal
-						Methods.setSecond(true);
 						Construct.screen.setText(second);
+
 					}
 
 				} else if (e.getActionCommand() == "A") {
 					second = ""; // deletes the whole number
+
 					Construct.screen.setText(second);
 				} else if (e.getActionCommand() == "L") {
-					second = second.substring(0, second.length() - 1); // deletes
-																		// the
-																		// last
-																		// character
+					// deletes the last character
+					if (second.length() > 1) {
+						second = second.substring(0, second.length() - 1);
+					}
 					Construct.screen.setText(second);
 				} else {
-					switch (character) { // invokes the methods
-											// depending on the command
-											// options
-					case '+':
-						first = Methods.sum();
-						second = "";
-						break;
-					case '-':
-						first = Methods.substract();
-						second = "";
-						break;
-					case '*':
-						first = Methods.multiply();
-						second = "";
-						break;
-					case '/':
-						first = Methods.divide();
-						second = "";
-						break;
+					if (Methods.isDouble(second) || Methods.isInt(second)) {
+						switch (character) {
+						// invokes the method depending on the command option
+						case '+':
+							helper = "";
+							helper += Methods.sum();
+							first = "";
+							first += helper;
+							second = "";
+							System.out.println(first);
+							break;
+						case '-':
+							first = "";
+							first = Methods.substract();
+							second = "";
+							break;
+						case '*':
 
+							first = Methods.multiply();
+							second = "";
+							break;
+						case '/':
+							first = Methods.divide();
+							second = "";
+							break;
+						default:
+							System.out.println(character);
+
+						}
 					}
 					character = e.getActionCommand().charAt(0);// takes
 					// the command character after the second
@@ -136,7 +151,5 @@ public class Listener implements ActionListener {
 			}
 		}
 	}
-
-
 
 }

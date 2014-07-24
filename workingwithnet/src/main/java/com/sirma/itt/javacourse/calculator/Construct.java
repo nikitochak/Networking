@@ -27,7 +27,7 @@ public class Construct {
 	public static void main(String[] args) {
 		constructPanels();
 		Buttons.setButtons();
-		screen.setFont(new Font("Are", Font.BOLD, 54));
+		screen.setFont(new Font("Are", Font.BOLD, 40));
 
 		for (int i = 0; i < 18; i++) {
 			panelButtons.add(Buttons.buttons[i]);

@@ -1,14 +1,12 @@
 package com.sirma.itt.javacourse.downloadagent;
 
 import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-
-import javax.swing.SwingWorker;
 
 /**
  * Has a method for downloading a file from the net.
@@ -17,10 +15,9 @@ import javax.swing.SwingWorker;
  * 
  */
 public class DownloadAgent {
+	private static long remain = 0;
 
-	private SwingWorker<Void, Void> worker;
 	private long lenght;
-	private long remain = 0;
 
 	/**
 	 * Downloads from the net by creating a URLConnection from the given string
@@ -33,54 +30,32 @@ public class DownloadAgent {
 	 *             into a file
 	 */
 	public void downloadFile(final String url) throws IOException {
-		worker = new SwingWorker<Void, Void>() {
+		InputStream is = null;
+		FileOutputStream output;
+		URLConnection myURLConnection = null;
+		String[] stringDirectories = url.split("/");// separates the
+													// string
+		String name = stringDirectories[stringDirectories.length - 1];
+		URL myURL = new URL(url);
+		byte b = 0;
+		try {
+			myURLConnection = myURL.openConnection();
+			lenght = myURLConnection.getContentLengthLong();
+			is = myURLConnection.getInputStream();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-			@Override
-			protected Void doInBackground() throws Exception {
-				String[] stringDirectories = url.split("/");// separates the
-															// string
-				String name = stringDirectories[stringDirectories.length - 1];
-				FileOutputStream output;
+		File newFile = new File(name); 
+		output = new FileOutputStream(newFile);
+		while (b != -1) {
+			b = (byte) is.read();
+			output.write(b);
+			remain += 1;
+		}
 
-				URL myURL = new URL(url);
-				URLConnection myURLConnection = null;
-				InputStreamReader in = null;
-				byte b = 0;
-				try {
-					myURLConnection = myURL.openConnection(); // makes a
-																// connection
-					InputStream is = myURLConnection.getInputStream(); // gets
-																		// the
-																		// input
-																		// stream
-					in = new InputStreamReader(is);
-					lenght = myURLConnection.getContentLengthLong();// gets the
-																	// length of
-																	// the file
-				} catch (IOException e) {
-
-					e.printStackTrace();
-				}
-
-				File newFile = new File(name); // takes the name and extension
-												// and makes a file
-				output = new FileOutputStream(newFile);
-
-				while (b != -1) {
-					b = (byte) in.read();
-					output.write(b);
-					remain += 1;
-					setProgress(Math.min(getPersent(remain), 100));// sets the
-																	// progress
-				}
-
-				output.close();
-
-				return null;
-			}
-
-		};
-
+		output.close();
 	}
 
 	/**
@@ -90,17 +65,25 @@ public class DownloadAgent {
 	 *            the number with the remaining bytes
 	 * @return the percent
 	 */
-	public int getPersent(long remain) {
-		return (int) ((remain * 100) / lenght);
+	public int getPercent(long remain) {
+		try {
+			return (int) ((remain * 100) / lenght);
+		} catch (ArithmeticException e) {
+			return 0;
+		}
 	}
 
 	/**
-	 * Getter for the swing worker.
+	 * Getter for the current value.
 	 * 
-	 * @return the worker
+	 * @return the current value
 	 */
-	public SwingWorker<Void, Void> getWorker() {
-		return worker;
+	public int getCurrentValue() {
+		try {
+			return (int) ((remain * 100) / lenght);
+		} catch (ArithmeticException e) {
+			return 0;
+		}
 	}
 
 }

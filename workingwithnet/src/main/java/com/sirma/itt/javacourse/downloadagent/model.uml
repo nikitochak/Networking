@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_91Y-EBDvEeSTCsNFBGdPKw" name="model">
   <packagedElement xmi:type="uml:Package" xmi:id="_GE6_cBJdEeSqLs724wsYCA" name="Download Agent">
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_KfcC8BJdEeSqLs724wsYCA" clientDependency="_pO0hYBJdEeSqLs724wsYCA _0iGzgBJdEeSqLs724wsYCA" name="The window.">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_KfcC8BJdEeSqLs724wsYCA" name="Window">
       <ownedComment xmi:type="uml:Comment" xmi:id="_crIXUBJdEeSqLs724wsYCA" annotatedElement="_KfcC8BJdEeSqLs724wsYCA">
         <body>The window where the user puts the address of the file and where he observes the result.</body>
       </ownedComment>
+      <include xmi:type="uml:Include" xmi:id="_Md9XgBNBEeSM69TDVXTZVQ" addition="_D-M88BNBEeSM69TDVXTZVQ"/>
+      <include xmi:type="uml:Include" xmi:id="_NIJkABNBEeSM69TDVXTZVQ" addition="_EvdawBNBEeSM69TDVXTZVQ"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_eauFoBJdEeSqLs724wsYCA" name=""/>
-    <packagedElement xmi:type="uml:Realization" xmi:id="_pO0hYBJdEeSqLs724wsYCA" name="Invokes the method in the agent." client="_KfcC8BJdEeSqLs724wsYCA" supplier="_eauFoBJdEeSqLs724wsYCA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_0iGzgBJdEeSqLs724wsYCA" name="" client="_KfcC8BJdEeSqLs724wsYCA" supplier="_I40qcBJdEeSqLs724wsYCA"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_D-M88BNBEeSM69TDVXTZVQ" name="Obeserve progress bar"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_EvdawBNBEeSM69TDVXTZVQ" name="Insert url"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Actor" xmi:id="_I40qcBJdEeSqLs724wsYCA" name="User"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BKUgEBNBEeSM69TDVXTZVQ" name="" memberEnd="_BKUgERNBEeSM69TDVXTZVQ _BKUgFBNBEeSM69TDVXTZVQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BKUgERNBEeSM69TDVXTZVQ" name="user" type="_I40qcBJdEeSqLs724wsYCA" association="_BKUgEBNBEeSM69TDVXTZVQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BKUgEhNBEeSM69TDVXTZVQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BKUgExNBEeSM69TDVXTZVQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_BKUgFBNBEeSM69TDVXTZVQ" name="the window." type="_KfcC8BJdEeSqLs724wsYCA" association="_BKUgEBNBEeSM69TDVXTZVQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BKUgFRNBEeSM69TDVXTZVQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BKUgFhNBEeSM69TDVXTZVQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>

@@ -69,7 +69,6 @@
 
 
 	<modules>
-		<module>gui</module>
 		<module>workingwithnet</module>
 	</modules>
 </project>

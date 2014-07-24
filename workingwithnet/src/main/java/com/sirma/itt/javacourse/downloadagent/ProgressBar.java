@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -41,13 +39,11 @@ public class ProgressBar {
 
 	public static void setTextField() {
 		text.setPreferredSize(new Dimension(300, 50));
-		// the field waits the customer to enter the url link and to press enter
+		// the field waits the customer to enter the link and to press enter
 		text.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -58,23 +54,7 @@ public class ProgressBar {
 					text.setText("Now we will download the file");
 					text.setEnabled(false);
 					try {
-						agent.downloadFile(link);// invokes the method which
-													// creates a string worker
-						agent.getWorker().execute();// starts that worker
-						agent.getWorker().addPropertyChangeListener(
-								new PropertyChangeListener() {
-									@Override
-									public void propertyChange(
-											PropertyChangeEvent evt) {
-										if (evt.getPropertyName().equals(
-												"progress")) {
-											progressBar.setValue((int) evt
-													.getNewValue());// sets the
-																	// new value
-										}
-									}
-								});
-
+						agent.downloadFile(link);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -127,6 +107,7 @@ public class ProgressBar {
 	 * Constructs all above made components and adds them to the frame.
 	 * 
 	 * @param args
+	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) {
 		setProgressBar();
@@ -140,6 +121,33 @@ public class ProgressBar {
 		panelBar.add(progressBar, new BorderLayout(50, 50));
 		frame.add(panelBar, BorderLayout.SOUTH);
 		frame.add(text);
+		setToBar();
+
 	}
 
+	/**
+	 * Sets the current value to the progress bar.
+	 */
+	public static void setToBar() {
+		int number = 0;
+		/*
+		 * 
+		 * for (int i = 0; i < 100;) {
+		 * 
+		 * if (number != agent.getCurrentValue()) { progressBar.setValue(i);
+		 * System.out.println(number); number = agent.getCurrentValue(); i++; }
+		 * 
+		 * }
+		 */
+		int i = 0;
+		while (number < 100) {
+			if (number != agent.getCurrentValue()) {
+				System.out.println(System.currentTimeMillis());
+				number = agent.getCurrentValue();
+				i++;
+				progressBar.setValue(i);
+			}
+		}
+
+	}
 }

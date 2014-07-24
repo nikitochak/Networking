@@ -7,17 +7,16 @@ package com.sirma.itt.javacourse.calculator;
  * 
  */
 public class Methods {
-	
+
 	private static Double firstDouble; // used if the first number is decimal
-	private static Double secondDouble;//used if the second field is decimal
+	private static Double secondDouble;// used if the second field is decimal
 	private static Integer firstInteger; // used if the first is integer
 	private static Integer secondInteger;// used if the second is integer
 	private static Double resultDouble; // used if the result is double
-	private static String result = ""; //the string the each method returns
-	private static Integer resultInteger;//used if the result is integer
-	private static boolean isSecond = false;//keep which turn is 
-	
-	
+	private static String result = ""; // the string the each method returns
+	private static Integer resultInteger;// used if the result is integer
+	private static boolean isSecond = false;// keep which turn is
+
 	/**
 	 * Getter for the field that keeps which number is.
 	 * 
@@ -168,6 +167,23 @@ public class Methods {
 		if (rest == 0) {
 			return true;
 		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Checks if a string is a double number.
+	 * 
+	 * @param string
+	 *            the string
+	 * @return true if the string is double
+	 */
+	public static boolean isDouble(String string) {
+		try {
+			@SuppressWarnings("unused")
+			Double d = Double.parseDouble(string);
+			return true;
+		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
