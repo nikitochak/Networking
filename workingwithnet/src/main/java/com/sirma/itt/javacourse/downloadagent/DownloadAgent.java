@@ -1,12 +1,13 @@
 package com.sirma.itt.javacourse.downloadagent;
 
+import java.io.BufferedInputStream;
 import java.io.File;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+
+import javax.swing.SwingWorker;
 
 /**
  * Has a method for downloading a file from the net.
@@ -15,9 +16,10 @@ import java.net.URLConnection;
  * 
  */
 public class DownloadAgent {
-	private static long remain = 0;
 
+	private SwingWorker<Void, Void> worker;
 	private long lenght;
+	private long remain = 0;
 
 	/**
 	 * Downloads from the net by creating a URLConnection from the given string
@@ -30,32 +32,43 @@ public class DownloadAgent {
 	 *             into a file
 	 */
 	public void downloadFile(final String url) throws IOException {
-		InputStream is = null;
-		FileOutputStream output;
-		URLConnection myURLConnection = null;
-		String[] stringDirectories = url.split("/");// separates the
-													// string
-		String name = stringDirectories[stringDirectories.length - 1];
-		URL myURL = new URL(url);
-		byte b = 0;
-		try {
-			myURLConnection = myURL.openConnection();
-			lenght = myURLConnection.getContentLengthLong();
-			is = myURLConnection.getInputStream();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		worker = new SwingWorker<Void, Void>() {
 
-		File newFile = new File(name); 
-		output = new FileOutputStream(newFile);
-		while (b != -1) {
-			b = (byte) is.read();
-			output.write(b);
-			remain += 1;
-		}
+			@Override
+			protected Void doInBackground() throws Exception {
+				String[] stringDirectories = url.split("/");// separates the
+															// string
+				String name = stringDirectories[stringDirectories.length - 1];
+				FileOutputStream output = new FileOutputStream(new File(name));
 
-		output.close();
+				URL myURL = new URL(url);
+				URLConnection myURLConnection = null;
+				BufferedInputStream in = null;
+
+				try {
+					myURLConnection = myURL.openConnection();
+					in = new BufferedInputStream(
+							myURLConnection.getInputStream());
+					lenght = myURLConnection.getContentLengthLong();
+
+					final byte data[] = new byte[1024];
+					int count;
+					while ((count = in.read(data, 0, 1024)) != -1) {
+						output.write(data, 0, count);
+						remain += count;
+						setProgress(Math.min(getPersent(remain), 100));
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				output.close();
+				return null;
+			}
+
+		};
+
 	}
 
 	/**
@@ -65,25 +78,17 @@ public class DownloadAgent {
 	 *            the number with the remaining bytes
 	 * @return the percent
 	 */
-	public int getPercent(long remain) {
-		try {
-			return (int) ((remain * 100) / lenght);
-		} catch (ArithmeticException e) {
-			return 0;
-		}
+	public int getPersent(long remain) {
+		return (int) ((remain * 100) / lenght);
 	}
 
 	/**
-	 * Getter for the current value.
+	 * Getter for the swing worker.
 	 * 
-	 * @return the current value
+	 * @return the worker
 	 */
-	public int getCurrentValue() {
-		try {
-			return (int) ((remain * 100) / lenght);
-		} catch (ArithmeticException e) {
-			return 0;
-		}
+	public SwingWorker<Void, Void> getWorker() {
+		return worker;
 	}
 
 }

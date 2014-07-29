@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_rEOgsBZ3EeSR5OWfRzYS-w" name="model">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_rEx6UBZ3EeSR5OWfRzYS-w" name="Connect">
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_JlFa8BZ4EeSR5OWfRzYS-w" name="ActionExecSpecStart" covered="_ByclEBZ4EeSR5OWfRzYS-w" execution="_JlGpEBZ4EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_JlGpEBZ4EeSR5OWfRzYS-w" name="ActionExecSpec" covered="_ByclEBZ4EeSR5OWfRzYS-w" finish="_JlHQIBZ4EeSR5OWfRzYS-w" start="_JlFa8BZ4EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_BRYp8BZ5EeSR5OWfRzYS-w" name="ActionExecSpec0" covered="_DAXwwBZ4EeSR5OWfRzYS-w" finish="_pvyLYBZ5EeSR5OWfRzYS-w" start="_-IlhcBaCEeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-Ik6YBaCEeSR5OWfRzYS-w" name="MessageSend1" covered="_ByclEBZ4EeSR5OWfRzYS-w" message="_-IkTUBaCEeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-IlhcBaCEeSR5OWfRzYS-w" name="MessageRecv1" covered="_DAXwwBZ4EeSR5OWfRzYS-w" message="_-IkTUBaCEeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_JlHQIBZ4EeSR5OWfRzYS-w" name="ActionExecSpecFinish" covered="_ByclEBZ4EeSR5OWfRzYS-w" execution="_JlGpEBZ4EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_qe-zsBZ5EeSR5OWfRzYS-w" name="ActionExecSpec1Start" covered="_ByclEBZ4EeSR5OWfRzYS-w" execution="_qe_awBZ5EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_qe_awBZ5EeSR5OWfRzYS-w" name="ActionExecSpec1" covered="_ByclEBZ4EeSR5OWfRzYS-w" finish="_qfAB0BZ5EeSR5OWfRzYS-w" start="_qe-zsBZ5EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pvyLYBZ5EeSR5OWfRzYS-w" name="MessageSend0" covered="_DAXwwBZ4EeSR5OWfRzYS-w" message="_pvxkUBZ5EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pvzZgBZ5EeSR5OWfRzYS-w" name="MessageRecv0" covered="_ByclEBZ4EeSR5OWfRzYS-w" message="_pvxkUBZ5EeSR5OWfRzYS-w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_qfAB0BZ5EeSR5OWfRzYS-w" name="ActionExecSpec1Finish" covered="_ByclEBZ4EeSR5OWfRzYS-w" execution="_qe_awBZ5EeSR5OWfRzYS-w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_ByclEBZ4EeSR5OWfRzYS-w" name="Client" coveredBy="_JlFa8BZ4EeSR5OWfRzYS-w _JlHQIBZ4EeSR5OWfRzYS-w _JlGpEBZ4EeSR5OWfRzYS-w _pvzZgBZ5EeSR5OWfRzYS-w _qe-zsBZ5EeSR5OWfRzYS-w _qfAB0BZ5EeSR5OWfRzYS-w _qe_awBZ5EeSR5OWfRzYS-w _-Ik6YBaCEeSR5OWfRzYS-w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_DAXwwBZ4EeSR5OWfRzYS-w" name="Server" coveredBy="_BRYp8BZ5EeSR5OWfRzYS-w _pvyLYBZ5EeSR5OWfRzYS-w _-IlhcBaCEeSR5OWfRzYS-w"/>
+    <message xmi:type="uml:Message" xmi:id="_pvxkUBZ5EeSR5OWfRzYS-w" name="Send message" messageSort="reply" receiveEvent="_pvzZgBZ5EeSR5OWfRzYS-w" sendEvent="_pvyLYBZ5EeSR5OWfRzYS-w"/>
+    <message xmi:type="uml:Message" xmi:id="_-IkTUBaCEeSR5OWfRzYS-w" name="Connect" receiveEvent="_-IlhcBaCEeSR5OWfRzYS-w" sendEvent="_-Ik6YBaCEeSR5OWfRzYS-w"/>
+  </packagedElement>
+</uml:Model>

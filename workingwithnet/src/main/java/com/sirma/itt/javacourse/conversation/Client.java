@@ -18,7 +18,7 @@ public class Client {
 
 	/**
 	 * Creates a socket and connects it to the server then waits for message
-	 * from the server. When the message is received the socket is closed.
+	 * from the server. When the message is received the socket closes.
 	 * 
 	 * @param args
 	 */
@@ -49,14 +49,11 @@ public class Client {
 
 			ClientWindow.writeToField("The message: " + all);
 
-			if (all != "") {
-				ClientWindow.writeToField("Closing the client.");
-				Thread.sleep(500);
-				client.close();
-			}
+			ClientWindow.writeToField("Disconnected.");
+			Thread.sleep(500);
+			client.close();
 
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();

@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_FJO_IBDwEeSTCsNFBGdPKw" name="model">
   <packagedElement xmi:type="uml:Package" xmi:id="_GKSMcBDwEeSTCsNFBGdPKw" name="Conversation">
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_OhqHEBDwEeSTCsNFBGdPKw" name="Server"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_UzhGsBDwEeSTCsNFBGdPKw" name="Client Socket"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_aqh9YBDwEeSTCsNFBGdPKw" clientDependency="_r_wj0BDwEeSTCsNFBGdPKw" name="Server Window"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_bmnyMBDwEeSTCsNFBGdPKw" clientDependency="_wS_TkBDwEeSTCsNFBGdPKw" name="Client Window"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_r_wj0BDwEeSTCsNFBGdPKw" name="Prints information for the conversation." client="_aqh9YBDwEeSTCsNFBGdPKw" supplier="_OhqHEBDwEeSTCsNFBGdPKw"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_wS_TkBDwEeSTCsNFBGdPKw" name="Prints information for the converstaion." client="_bmnyMBDwEeSTCsNFBGdPKw" supplier="_UzhGsBDwEeSTCsNFBGdPKw"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_5ioxMBF4EeSYc8iRqIrQsA" name="Communicate." memberEnd="_5ioxMRF4EeSYc8iRqIrQsA _5ioxNBF4EeSYc8iRqIrQsA">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_5ioxMRF4EeSYc8iRqIrQsA" name="client socket" type="_UzhGsBDwEeSTCsNFBGdPKw" association="_5ioxMBF4EeSYc8iRqIrQsA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5ioxMhF4EeSYc8iRqIrQsA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5ioxMxF4EeSYc8iRqIrQsA" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_5ioxNBF4EeSYc8iRqIrQsA" name="server" type="_OhqHEBDwEeSTCsNFBGdPKw" association="_5ioxMBF4EeSYc8iRqIrQsA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5ioxNRF4EeSYc8iRqIrQsA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5ioxNhF4EeSYc8iRqIrQsA" value="1"/>
-      </ownedEnd>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aqh9YBDwEeSTCsNFBGdPKw" name="Server Window">
+      <include xmi:type="uml:Include" xmi:id="_2Y4TgBZxEeSR5OWfRzYS-w" addition="_uRjnEBZxEeSR5OWfRzYS-w"/>
+      <include xmi:type="uml:Include" xmi:id="_2yZmwBZxEeSR5OWfRzYS-w" addition="_yuVUYBZxEeSR5OWfRzYS-w"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bmnyMBDwEeSTCsNFBGdPKw" name="Client Window">
+      <include xmi:type="uml:Include" xmi:id="_71E2cBZxEeSR5OWfRzYS-w" addition="_5e4bIBZxEeSR5OWfRzYS-w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_uRjnEBZxEeSR5OWfRzYS-w" name="Stop button"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_yuVUYBZxEeSR5OWfRzYS-w" name="Display results"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_5e4bIBZxEeSR5OWfRzYS-w" name="Display result"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Actor" xmi:id="_jeyBQBDwEeSTCsNFBGdPKw" name="Remote client"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_mRKCQBDwEeSTCsNFBGdPKw" name="Server maker"/>

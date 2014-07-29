@@ -58,28 +58,30 @@ public class Listener implements ActionListener {
 					} catch (NumberFormatException exNum) {
 						// else does nothing and waits for another command
 					}
-				} else if (e.getActionCommand() == "L") {
+				} else if (e.getActionCommand() == "L" && first.length() >= 1) {
 					if (first.length() > 0) {
 						// deletes the last character
 						first = first.substring(0, first.length() - 1);
 					}
 					Construct.screen.setText(first);
-				} else if (e.getActionCommand() == "A") {
+				} else if (e.getActionCommand() == "A" && first.length() >= 1) {
 					first = "";
 					Construct.screen.setText(first); // deletes the
 														// whole number
 				} else if (e.getActionCommand() == "-" && first.length() == 0) {
 					first += "-";
 					Construct.screen.setText(first);
-				} else if (e.getActionCommand() == "=") {
+				} else if (e.getActionCommand() == "=" && first.length() >= 1) {
 					Construct.screen.setText(first);
 				} else {
 					if (Methods.isInt(first) || Methods.isDouble(first)) {
 						// keeps the command
-						character = e.getActionCommand().charAt(0);
-						Methods.setSecond(true); // sets the next number to be
-													// put
-													// to the second
+						if (first.length() >= 1) {
+							character = e.getActionCommand().charAt(0);
+							Methods.setSecond(true); // sets the next number to
+														// be
+						} // put
+							// to the second
 					}
 				}
 			}
@@ -123,7 +125,6 @@ public class Listener implements ActionListener {
 							System.out.println(first);
 							break;
 						case '-':
-							first = "";
 							first = Methods.substract();
 							second = "";
 							break;

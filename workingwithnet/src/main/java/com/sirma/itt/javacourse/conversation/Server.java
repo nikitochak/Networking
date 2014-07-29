@@ -38,7 +38,8 @@ public class Server {
 			ServerWindow
 					.writeToField("The server and a socket have made a connection.");
 
-			String message = "Message\nafdasdfsdf asdfsd\nasf";
+			String message = "Message sent: " + System.currentTimeMillis()
+					+ " \n";
 			OutputStream os = socket.getOutputStream();
 			OutputStreamWriter osw = new OutputStreamWriter(os);
 			BufferedWriter bw = new BufferedWriter(osw);
