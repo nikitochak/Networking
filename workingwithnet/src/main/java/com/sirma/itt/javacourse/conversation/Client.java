@@ -25,7 +25,7 @@ public class Client {
 	public static void main(String[] args) {
 		try {
 			new ClientWindow();
-			client = new Socket("localhost", 666);
+			client = new Socket("localhost", 6666);
 			ClientWindow.writeToField("Conected to the server.");
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

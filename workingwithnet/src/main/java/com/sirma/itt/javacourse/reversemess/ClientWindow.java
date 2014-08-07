@@ -1,11 +1,14 @@
 package com.sirma.itt.javacourse.reversemess;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,6 +28,7 @@ import javax.swing.JTextField;
 public class ClientWindow {
 
 	private static JTextArea area = new JTextArea(10, 10);
+	private static String output = "";
 	private JFrame frame = new JFrame("Frame");
 	private JPanel panel = new JPanel();
 	private JTextField field = new JTextField();
@@ -33,6 +37,10 @@ public class ClientWindow {
 			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 	private JButton button = new JButton("Connect");
 	private JButton sendButton = new JButton("Send");
+	private Client client;
+	private List<Originator.Memento> savedStates = new ArrayList<Originator.Memento>();
+	private Originator originator = new Originator();
+	private int toWhere = 0;
 
 	/**
 	 * Constructs the window.
@@ -80,9 +88,11 @@ public class ClientWindow {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Client().start();
+				client = new Client();
+				client.start();
 				button.setEnabled(false);
-				area.setText("conected");
+				output += "Connected to the server.\n";
+				area.setText(output);
 			}
 		});
 		button.setPreferredSize(new Dimension(100, 50));
@@ -102,6 +112,31 @@ public class ClientWindow {
 	 */
 	public void setField() {
 		field.setPreferredSize(new Dimension(400, 50));
+		field.addKeyListener(new KeyListener(){
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_UP){
+					if(toWhere!=savedStates.size()){
+						field.setText(savedStates.get(toWhere).getSavedState());
+						toWhere++;
+					}
+					if(toWhere!=0){
+						toWhere--;
+						field.setText(savedStates.get(toWhere).getSavedState());
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+			
+		});
 	}
 
 	/**
@@ -113,13 +148,12 @@ public class ClientWindow {
 		sendButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (field.getText() != "") {
-					if (field.getText() == ".") {
-						Client.setCon(false);
-					}
-					Client.sendMessage(field.getText());
-
-					// System.out.println(field.getText());
+				if (!field.getText().equals("")) {
+					client.sendMessage(field.getText());
+					originator.set(field.getText());
+					savedStates.add(originator.saveToMemento());
+					toWhere++;
+					field.setText("");
 				}
 			}
 		});
@@ -132,7 +166,8 @@ public class ClientWindow {
 	 *            the message which must be written.
 	 */
 	public static void setToArea(String message) {
-		area.setText(message);
+		output += message + "\n";
+		area.setText(output);
 	}
 
 	/**

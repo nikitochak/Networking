@@ -29,7 +29,7 @@ public class Server {
 		try {
 			new ServerWindow();
 
-			server = new ServerSocket(666);
+			server = new ServerSocket(6666);
 			ServerWindow.writeToField("The server is started");
 
 			socket = server.accept();
@@ -53,21 +53,17 @@ public class Server {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 	/**
 	 * Closes the server and the socket.
 	 */
 	public static void stopServer() {
-
 		try {
 			server.close();
 			socket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }

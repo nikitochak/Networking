@@ -79,7 +79,7 @@ public class ServerWindow {
 		frame.add(new JLabel("Here is the text"), BorderLayout.CENTER);
 		frame.add(panel, BorderLayout.SOUTH);
 		frame.pack();
-		server.create();
+		server.start();
 	}
 
 	/**
@@ -89,10 +89,8 @@ public class ServerWindow {
 	 *            the string which the server wants to write.
 	 */
 	public static void writeToField(String what) {
-		output += what;
-		output += " \n";
+		output += what + "\n";
 		field.setText(output);
-		System.out.println(output);
 	}
 
 	public static void main(String[] args) {

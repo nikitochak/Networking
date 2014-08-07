@@ -3,7 +3,7 @@ package com.sirma.itt.javacourse.reversemess;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -14,27 +14,28 @@ import java.net.UnknownHostException;
  * 
  */
 public class Client extends Thread {
+	private boolean isConnected = true;
+	private PrintWriter writer;
 	private Socket socket;
-	private InputStreamReader reader;
 	private BufferedReader buffReader;
-	private static OutputStreamWriter writer;
 	private String message = "";
-	private static boolean isConnected = true;
 
-	/**
-	 * Connects to a server.
-	 */
+	@Override
 	public void run() {
 		try {
 			socket = new Socket("localhost", 1948);
-			writer = new OutputStreamWriter(socket.getOutputStream());
+			writer = new PrintWriter(socket.getOutputStream(), true);
+			buffReader = new BufferedReader(new InputStreamReader(
+					socket.getInputStream()));
+			receiveMessage();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		while (isConnected) {
-			receiveMessage();
+
 		}
 
 		try {
@@ -42,6 +43,7 @@ public class Client extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	/**
@@ -50,13 +52,14 @@ public class Client extends Thread {
 	 * @param message
 	 *            the message which must be send
 	 */
-	public static void sendMessage(String message) {
-		try {
-			System.out.println(message);
-			writer.write(message);
-			writer.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void sendMessage(String message) {
+		if (!message.equals(".")) {
+			writer.println(message);
+			receiveMessage();
+		} else {
+			ClientWindow.setToArea("Bye bye");
+			System.exit(0);
+			isConnected = false;
 		}
 	}
 
@@ -64,37 +67,21 @@ public class Client extends Thread {
 	 * Receives the message and writes it in the area.
 	 */
 	public void receiveMessage() {
-		String line = "";
-		System.out.println("Are vutre.");
+
 		message = "";
 		try {
-			reader = new InputStreamReader(socket.getInputStream());
-			buffReader = new BufferedReader(reader);
+			while (!buffReader.ready()) {
+
+			}
+
+			while (buffReader.ready()) {
+				message += buffReader.readLine();
+			}
+			if (message != "") {
+				ClientWindow.setToArea(message);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		while (line != null) {
-			try {
-				line = buffReader.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			if (line != null) {
-				message += line + "\n";
-			}
-		}
-		ClientWindow.setToArea(message);
-		System.out.println(message);
-	}
-
-	/**
-	 * Setter for the field isConnected.
-	 * 
-	 * @param flag
-	 *            the value
-	 */
-	public static void setCon(boolean flag) {
-		isConnected = flag;
 	}
 }

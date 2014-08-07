@@ -3,7 +3,7 @@ package com.sirma.itt.javacourse.reversemess;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,14 +13,11 @@ import java.net.Socket;
  * @author Nikolay Ch
  * 
  */
-public class Server {
+public class Server extends Thread {
 	private ServerSocket server;
 	private Socket socket;
-	private OutputStreamWriter writer;
+	private PrintWriter writer;
 	private BufferedReader buffReader;
-	private boolean toContinue = true;
-	private String message;
-	private String line;
 
 	/**
 	 * Closes the server.
@@ -34,83 +31,56 @@ public class Server {
 		}
 	}
 
-	public void create() {
+	@Override
+	public void run() {
 
 		try {
 			server = new ServerSocket(1948);
 			socket = server.accept();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		ServerWindow.writeToField("The client has connected.");
-
-		try {
+			ServerWindow.writeToField("Connected.");
 			buffReader = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
-
-			writer = new OutputStreamWriter(socket.getOutputStream());
-			writer.write("Hello Message.");
-			writer.flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		ServerWindow.writeToField("The hello message has been sent.");
-		new Thread() {
-
-			@Override
-			public void run() {
-				System.out.println("Vutre u servera.");
-				while (toContinue) {
-					String get = null;
-					get = readClientMessage();
-					System.out.println(get);
-					if (get != null) {
-						writeReverseMessage(get);
-						System.out.println(get);
-					}
-				}
+			writer = new PrintWriter(socket.getOutputStream(), true);
+			writer.println("Hello\n");
+			ServerWindow.writeToField("Welcome message sent.");
+			while (true) {
+				readClientMessage();
 			}
-		}.start();
-	}
-
-	/**
-	 * Reverses a string.
-	 * 
-	 * @param string
-	 *            the string which must be reversed
-	 * @return the reversed string
-	 */
-	public String readClientMessage() {
-		try {
-			line = buffReader.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(line);
-		return line;
+
 	}
 
 	/**
-	 * Reverses a string and writes it into the clients stream.
-	 * 
-	 * @param string
-	 *            the string which must be reversed
+	 * Reads the message from the client and invokes the sendMessage method.
 	 */
-	public void writeReverseMessage(String string) {
-		String reversed = "";
-		int length = string.length();
-		for (int i = length - 1; i >= 0; i--) {
-			reversed += string.charAt(i);
-		}
-		message = "The reverse of " + line + " is " + reversed;
-		System.out.println(message);
-		ServerWindow.writeToField(message);
+	public void readClientMessage() {
 		try {
-			writer.write(message);
-			writer.flush();
-		} catch (Exception e) {
+			while (buffReader.ready()) {
+				writeClientMessage(buffReader.readLine());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Writes the reversed message on the text area and on the clients input
+	 * stream.
+	 * 
+	 * @param message
+	 *            the clients message
+	 */
+	public void writeClientMessage(String message) {
+		int length = message.length();
+		String reversed = "The reverse of " + message + " is ";
+		for (int i = length - 1; i >= 0; i--) {
+			reversed += message.charAt(i);
+		}
+
+		ServerWindow.writeToField(reversed);
+		writer.println(reversed+"\n");
 	}
 }

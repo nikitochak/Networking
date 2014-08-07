@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_9iY2sBxtEeSgIryYgoztZg" name="model">
+  <packagedElement xmi:type="uml:Package" xmi:id="_BANBYBxuEeSgIryYgoztZg" name="Reverse message">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aSoH4BxuEeSgIryYgoztZg" name="Client Window">
+      <include xmi:type="uml:Include" xmi:id="_olwPQBxuEeSgIryYgoztZg" addition="_faVokBxuEeSgIryYgoztZg"/>
+      <include xmi:type="uml:Include" xmi:id="_pHH28BxuEeSgIryYgoztZg" addition="_mvvv4BxuEeSgIryYgoztZg"/>
+      <include xmi:type="uml:Include" xmi:id="_pr9CUBxuEeSgIryYgoztZg" addition="_le6aIBxuEeSgIryYgoztZg"/>
+      <include xmi:type="uml:Include" xmi:id="_qP8gMBxuEeSgIryYgoztZg" addition="_jQrA8BxuEeSgIryYgoztZg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_faVokBxuEeSgIryYgoztZg" name="Send Button"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_jQrA8BxuEeSgIryYgoztZg" name="Connect Button"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_le6aIBxuEeSgIryYgoztZg" name="Text Area"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_mvvv4BxuEeSgIryYgoztZg" name="Send Field"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_EAQ5EBxuEeSgIryYgoztZg" name="Client"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cv-UEBxuEeSgIryYgoztZg" name="" memberEnd="_cv-UERxuEeSgIryYgoztZg _cv-UFBxuEeSgIryYgoztZg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cv-UERxuEeSgIryYgoztZg" name="client" type="_EAQ5EBxuEeSgIryYgoztZg" association="_cv-UEBxuEeSgIryYgoztZg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cv-UEhxuEeSgIryYgoztZg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cv-UExxuEeSgIryYgoztZg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cv-UFBxuEeSgIryYgoztZg" name="client window" type="_aSoH4BxuEeSgIryYgoztZg" association="_cv-UEBxuEeSgIryYgoztZg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cv-UFRxuEeSgIryYgoztZg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cv-UFhxuEeSgIryYgoztZg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

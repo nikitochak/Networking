@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_OwpdABxvEeSgIryYgoztZg" name="model">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_OwtHYBxvEeSgIryYgoztZg" name="Reverse Messages" group="_oZgtkBxvEeSgIryYgoztZg _jWRLQBxxEeSgIryYgoztZg _PmYq0BxyEeSgIryYgoztZg _Ub-gwBxyEeSgIryYgoztZg" node="_RpZy0BxvEeSgIryYgoztZg _gTu5QBxvEeSgIryYgoztZg _IggpwBxxEeSgIryYgoztZg _VScrMBxxEeSgIryYgoztZg _aTgKQBxxEeSgIryYgoztZg _mSJGgBxxEeSgIryYgoztZg _K_2kkBxyEeSgIryYgoztZg">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_jPFQEBxvEeSgIryYgoztZg" name="" source="_RpZy0BxvEeSgIryYgoztZg" target="_gTu5QBxvEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_9dKtkBxvEeSgIryYgoztZg" name="" source="_gTu5QBxvEeSgIryYgoztZg" target="_oZgtkBxvEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_VRdCIBxwEeSgIryYgoztZg" name="If correct" source="__tJMIBxvEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_aWUDIBxwEeSgIryYgoztZg" name="true" target="_EO6uMBxwEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_bUe7kBxwEeSgIryYgoztZg" name="" source="_EO6uMBxwEeSgIryYgoztZg" target="_IkTaEBxwEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_cCU5ABxwEeSgIryYgoztZg" name="" source="_IkTaEBxwEeSgIryYgoztZg" target="__tJMIBxvEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_LiP8cBxxEeSgIryYgoztZg" name="" source="_ztiKEBxwEeSgIryYgoztZg" target="_IggpwBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_fdBo0BxxEeSgIryYgoztZg" name="" source="_VScrMBxxEeSgIryYgoztZg" target="_aTgKQBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gft04BxxEeSgIryYgoztZg" name="if a client connects" source="_aTgKQBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pUF0kBxxEeSgIryYgoztZg" name="is a client connects" source="_aTgKQBxxEeSgIryYgoztZg" target="_mSJGgBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_8bqiYBxxEeSgIryYgoztZg" name="" source="_mSJGgBxxEeSgIryYgoztZg" target="_wphxEBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_9XQA4BxxEeSgIryYgoztZg" name="" source="_wphxEBxxEeSgIryYgoztZg" target="_yxMBIBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_-eRTUBxxEeSgIryYgoztZg" name="" source="_yxMBIBxxEeSgIryYgoztZg" target="_0XQAABxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_GZQM4BxyEeSgIryYgoztZg" name="" source="_tj2ZkBxxEeSgIryYgoztZg" target="_wphxEBxxEeSgIryYgoztZg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_L5DdcBxyEeSgIryYgoztZg" name="" source="_BbNlkBxyEeSgIryYgoztZg" target="_K_2kkBxyEeSgIryYgoztZg"/>
+    <group xmi:type="uml:LoopNode" xmi:id="_oZgtkBxvEeSgIryYgoztZg" name="LoopNode" inPartition="_Ub-gwBxyEeSgIryYgoztZg" incoming="_9dKtkBxvEeSgIryYgoztZg">
+      <node xmi:type="uml:SendSignalAction" xmi:id="__tJMIBxvEeSgIryYgoztZg" name="SendSend message" outgoing="_VRdCIBxwEeSgIryYgoztZg" incoming="_cCU5ABxwEeSgIryYgoztZg" signal="_A4MC8BxwEeSgIryYgoztZg">
+        <handler xmi:type="uml:ExceptionHandler" xmi:id="_6Cyb8BxwEeSgIryYgoztZg"/>
+        <target xmi:type="uml:InputPin" xmi:id="_A408IBxwEeSgIryYgoztZg" name="">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_A408IRxwEeSgIryYgoztZg" value="1"/>
+        </target>
+      </node>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_EO6uMBxwEeSgIryYgoztZg" name="Accept reversed message" outgoing="_bUe7kBxwEeSgIryYgoztZg" incoming="_aWUDIBxwEeSgIryYgoztZg"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_IkTaEBxwEeSgIryYgoztZg" name="Notify user" outgoing="_cCU5ABxwEeSgIryYgoztZg" incoming="_bUe7kBxwEeSgIryYgoztZg"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_ztiKEBxwEeSgIryYgoztZg" name="Notify user" outgoing="_LiP8cBxxEeSgIryYgoztZg">
+        <inputValue xmi:type="uml:InputPin" xmi:id="_1Ne54BxwEeSgIryYgoztZg" name="">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_1NhWIBxwEeSgIryYgoztZg" value="1"/>
+        </inputValue>
+      </node>
+    </group>
+    <group xmi:type="uml:LoopNode" xmi:id="_jWRLQBxxEeSgIryYgoztZg" name="LoopNode1" inPartition="_PmYq0BxyEeSgIryYgoztZg">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_tj2ZkBxxEeSgIryYgoztZg" name="Notify success" outgoing="_GZQM4BxyEeSgIryYgoztZg"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_wphxEBxxEeSgIryYgoztZg" name="Accept message" outgoing="_9XQA4BxxEeSgIryYgoztZg" incoming="_8bqiYBxxEeSgIryYgoztZg _GZQM4BxyEeSgIryYgoztZg"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_yxMBIBxxEeSgIryYgoztZg" name="Reverse message" outgoing="_-eRTUBxxEeSgIryYgoztZg" incoming="_9XQA4BxxEeSgIryYgoztZg"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_0XQAABxxEeSgIryYgoztZg" name="SendSend reversed" incoming="_-eRTUBxxEeSgIryYgoztZg" signal="_1Jk00BxxEeSgIryYgoztZg">
+        <handler xmi:type="uml:ExceptionHandler" xmi:id="__jU24BxxEeSgIryYgoztZg"/>
+        <target xmi:type="uml:InputPin" xmi:id="_1KNuABxxEeSgIryYgoztZg" name="target">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_1KNuARxxEeSgIryYgoztZg" value="1"/>
+        </target>
+      </node>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_BbNlkBxyEeSgIryYgoztZg" name="Notify fail" outgoing="_L5DdcBxyEeSgIryYgoztZg"/>
+    </group>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_PmYq0BxyEeSgIryYgoztZg" name="Server" node="_aTgKQBxxEeSgIryYgoztZg _mSJGgBxxEeSgIryYgoztZg _VScrMBxxEeSgIryYgoztZg _jWRLQBxxEeSgIryYgoztZg _K_2kkBxyEeSgIryYgoztZg"/>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_Ub-gwBxyEeSgIryYgoztZg" name="Client" node="_oZgtkBxvEeSgIryYgoztZg _IggpwBxxEeSgIryYgoztZg _gTu5QBxvEeSgIryYgoztZg _RpZy0BxvEeSgIryYgoztZg"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_RpZy0BxvEeSgIryYgoztZg" name="InitialNode" inPartition="_Ub-gwBxyEeSgIryYgoztZg" outgoing="_jPFQEBxvEeSgIryYgoztZg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_gTu5QBxvEeSgIryYgoztZg" name="Connect to the server." inPartition="_Ub-gwBxyEeSgIryYgoztZg" outgoing="_9dKtkBxvEeSgIryYgoztZg" incoming="_jPFQEBxvEeSgIryYgoztZg"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_IggpwBxxEeSgIryYgoztZg" name="ActivityFinalNode" inPartition="_Ub-gwBxyEeSgIryYgoztZg" incoming="_LiP8cBxxEeSgIryYgoztZg"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_VScrMBxxEeSgIryYgoztZg" name="InitialNode1" inPartition="_PmYq0BxyEeSgIryYgoztZg" outgoing="_fdBo0BxxEeSgIryYgoztZg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_aTgKQBxxEeSgIryYgoztZg" name="Start server" inPartition="_PmYq0BxyEeSgIryYgoztZg" outgoing="_gft04BxxEeSgIryYgoztZg _pUF0kBxxEeSgIryYgoztZg" incoming="_fdBo0BxxEeSgIryYgoztZg"/>
+    <node xmi:type="uml:SendSignalAction" xmi:id="_mSJGgBxxEeSgIryYgoztZg" name="SendSend welcome message" inPartition="_PmYq0BxyEeSgIryYgoztZg" outgoing="_8bqiYBxxEeSgIryYgoztZg" incoming="_pUF0kBxxEeSgIryYgoztZg" signal="_nbUVEBxxEeSgIryYgoztZg">
+      <target xmi:type="uml:InputPin" xmi:id="_nb_DcBxxEeSgIryYgoztZg" name="target">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_nb_DcRxxEeSgIryYgoztZg" value="1"/>
+      </target>
+    </node>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_K_2kkBxyEeSgIryYgoztZg" name="ActivityFinalNode1" inPartition="_PmYq0BxyEeSgIryYgoztZg" incoming="_L5DdcBxyEeSgIryYgoztZg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_A4MC8BxwEeSgIryYgoztZg" name="Send message"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_nbUVEBxxEeSgIryYgoztZg" name="Send welcome message"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_1Jk00BxxEeSgIryYgoztZg" name="Send reversed"/>
+</uml:Model>
